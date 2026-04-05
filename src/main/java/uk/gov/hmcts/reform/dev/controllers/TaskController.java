@@ -7,10 +7,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class RootController {
+public class TaskController {
 
-  @GetMapping("/")
-  public ResponseEntity<String> welcome() {
-    return ok("Welcome to test-backend");
+  @GetMapping(value = "/tasks", produces = "application/json")
+  public ResponseEntity<String> getExampleCase() {
+    return ok("hello");
   }
 }
