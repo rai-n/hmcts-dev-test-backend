@@ -9,8 +9,8 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class TaskController {
 
-  @GetMapping(value = "/tasks", produces = "application/json")
-  public ResponseEntity<String> getExampleCase() {
-    return ok("hello");
-  }
+    @GetMapping(value = "/tasks", produces = "application/json")
+    public ResponseEntity<String> getExampleCase() {
+        return ok("hello");
+    }
 }

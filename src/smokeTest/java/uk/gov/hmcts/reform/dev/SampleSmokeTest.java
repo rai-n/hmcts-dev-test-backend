@@ -13,23 +13,23 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.DEFINED_PORT)
 class SampleSmokeTest {
-  protected static final String CONTENT_TYPE_VALUE = "application/json";
+    protected static final String CONTENT_TYPE_VALUE = "application/json";
 
-  @Value("${TEST_URL:http://localhost:8080}")
-  private String testUrl;
+    @Value("${TEST_URL:http://localhost:8080}")
+    private String testUrl;
 
-  @BeforeEach
-  public void setUp() {
-    RestAssured.baseURI = testUrl;
-    RestAssured.useRelaxedHTTPSValidation();
-  }
+    @BeforeEach
+    public void setUp() {
+        RestAssured.baseURI = testUrl;
+        RestAssured.useRelaxedHTTPSValidation();
+    }
 
-  @Test
-  void smokeTest() {
-    Response response =
-        given().contentType(ContentType.JSON).when().get().then().extract().response();
+    @Test
+    void smokeTest() {
+        Response response =
+                given().contentType(ContentType.JSON).when().get().then().extract().response();
 
-    Assertions.assertEquals(200, response.statusCode());
-    Assertions.assertTrue(response.asString().startsWith("Welcome"));
-  }
+        Assertions.assertEquals(200, response.statusCode());
+        Assertions.assertTrue(response.asString().startsWith("Welcome"));
+    }
 }

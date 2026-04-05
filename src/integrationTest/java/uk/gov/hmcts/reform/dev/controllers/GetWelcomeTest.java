@@ -14,13 +14,14 @@ import org.springframework.test.web.servlet.MvcResult;
 @WebMvcTest
 class GetWelcomeTest {
 
-  @Autowired private transient MockMvc mockMvc;
+    @Autowired
+    private transient MockMvc mockMvc;
 
-  @DisplayName("Should welcome upon root request with 200 response code")
-  @Test
-  void welcomeRootEndpoint() throws Exception {
-    MvcResult response = mockMvc.perform(get("/")).andExpect(status().isOk()).andReturn();
+    @DisplayName("Should welcome upon root request with 200 response code")
+    @Test
+    void welcomeRootEndpoint() throws Exception {
+        MvcResult response = mockMvc.perform(get("/")).andExpect(status().isOk()).andReturn();
 
-    assertThat(response.getResponse().getContentAsString()).startsWith("Welcome");
-  }
+        assertThat(response.getResponse().getContentAsString()).startsWith("Welcome");
+    }
 }

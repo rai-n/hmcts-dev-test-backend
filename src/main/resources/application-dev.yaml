@@ -28,9 +28,9 @@ spring:
     name: Dev Test
   datasource:
     driver-class-name: org.postgresql.Driver
-    url: jdbc:postgresql://${DB_HOST}:${DB_PORT}/${DB_NAME}${DB_OPTIONS:}
-    username: ${DB_USER_NAME}
-    password: ${DB_PASSWORD}
+    url: jdbc:h2:mem:testdb;MODE=PostgreSQL;DB_CLOSE_DELAY=-1
+    username: sa
+    password:
     properties:
       charSet: UTF-8
     hikari:
@@ -42,10 +42,10 @@ spring:
       connectionTimeout: 30000
   jpa:
     hibernate:
-      ddl-auto: update
+      ddl-auto: create-drop
     properties:
       hibernate:
-        dialect: org.hibernate.dialect.PostgreSQLDialect
+        dialect: org.hibernate.dialect.H2Dialect
         batch_versioned_data: true
         jdbc:
           batch_size: 50 # for batch update
