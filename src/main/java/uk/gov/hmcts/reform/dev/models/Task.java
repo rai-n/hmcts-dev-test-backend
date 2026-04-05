@@ -57,6 +57,13 @@ public class Task {
     @LastModifiedDate
     private LocalDateTime updatedAt;
 
+    public Task(String title, String description, TaskStatus status, LocalDateTime dueDate) {
+        this.title = title;
+        this.description = description;
+        this.status = status;
+        this.dueDate = dueDate;
+    }
+
     public enum TaskStatus {
         DRAFT,
         SUBMITTED,
