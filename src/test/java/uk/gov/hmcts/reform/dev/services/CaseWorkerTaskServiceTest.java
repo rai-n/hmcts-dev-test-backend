@@ -17,6 +17,8 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import uk.gov.hmcts.reform.dev.dto.requests.CreateTaskRequest;
 import uk.gov.hmcts.reform.dev.dto.requests.UpdateTaskRequest;
 import uk.gov.hmcts.reform.dev.dto.responses.PagedTaskResponse;
@@ -104,9 +106,19 @@ class CaseWorkerTaskServiceTest {
     }
 
     @Test
-    @DisplayName("Should return empty list when no tasks")
-    void shouldReturnEmptyListWhenNoTasks() {
-        when(taskRepository.findAll()).thenReturn(Collections.emptyList());
+    @DisplayName("Should return empty page when no tasks")
+    @SuppressWarnings("unchecked")
+    void shouldReturnEmptyPageWhenNoTasks() {
+        Page<Task> emptyPage = mock(Page.class);
+
+        when(taskRepository.findAll(any(Pageable.class))).thenReturn(emptyPage);
+        when(emptyPage.getContent()).thenReturn(Collections.emptyList());
+        when(emptyPage.getTotalElements()).thenReturn(0L);
+        when(emptyPage.getSize()).thenReturn(10);
+        when(emptyPage.getNumber()).thenReturn(1);
+        when(emptyPage.getTotalPages()).thenReturn(0);
+        when(emptyPage.hasPrevious()).thenReturn(false);
+        when(emptyPage.hasNext()).thenReturn(false);
 
         PagedTaskResponse results = taskService.getTasks(1, 10);
         assertThat(results.getData()).isEmpty();

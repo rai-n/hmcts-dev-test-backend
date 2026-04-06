@@ -17,8 +17,6 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class PagedTaskResponse {
 
-    private List<TaskResponse> data;
-
     /**
      * Pagination links following json api format.
      * "self": "v1/tasks?page[offset]=0&page[limit]=10",
@@ -30,6 +28,8 @@ public class PagedTaskResponse {
     private Map<String, String> links;
 
     private PageDetails pageDetails;
+
+    private List<TaskResponse> data;
 
     @Builder
     @Getter

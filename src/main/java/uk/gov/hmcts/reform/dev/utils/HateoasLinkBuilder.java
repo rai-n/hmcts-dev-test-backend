@@ -13,7 +13,7 @@ import java.util.Map;
  */
 public class HateoasLinkBuilder {
 
-    private static final String BASE_PATH = "v1/tasks";
+    private static final String BASE_PATH = "/v1/tasks";
 
     private HateoasLinkBuilder() {
 
@@ -48,7 +48,7 @@ public class HateoasLinkBuilder {
             paginationLinks.put("next", String.format("%s?page=%d&size=%d", BASE_PATH, page.getNumber() + 1, size));
         }
 
-        paginationLinks.put("last", String.format("%s?page=%d&size=%d", BASE_PATH, page.getTotalPages(), size));
+        paginationLinks.put("last", String.format("%s?page=%d&size=%d", BASE_PATH, page.getTotalPages() - 1, size));
 
         return paginationLinks;
     }

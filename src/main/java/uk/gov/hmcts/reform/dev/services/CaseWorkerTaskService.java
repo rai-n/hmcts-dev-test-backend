@@ -56,6 +56,11 @@ public class CaseWorkerTaskService implements TaskService {
         Pageable pageable = PageRequest.of(page, size);
         Page<Task> taskPage = taskRepository.findAll(pageable);
 
+        if (page >= taskPage.getTotalPages() && taskPage.getTotalPages() > 0) {
+            pageable = PageRequest.of(taskPage.getTotalPages() - 1, size);
+            taskPage = taskRepository.findAll(pageable);
+        }
+
         List<TaskResponse> taskResponses = taskPage.getContent()
             .stream()
             .map(taskMapper::toResponse)
