@@ -32,6 +32,7 @@ public interface TaskMapper {
      * Links populated by controller.
      */
     @Mapping(target = "links", ignore = true)
+    @Mapping(target = "type", ignore = true)
     TaskResponse toResponse(Task task);
 
     /**

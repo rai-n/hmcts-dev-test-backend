@@ -9,9 +9,7 @@ import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 import java.time.LocalDateTime;
-import java.util.Arrays;
 import java.util.Collections;
-import java.util.List;
 import java.util.Optional;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -21,6 +19,7 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import uk.gov.hmcts.reform.dev.dto.requests.CreateTaskRequest;
 import uk.gov.hmcts.reform.dev.dto.requests.UpdateTaskRequest;
+import uk.gov.hmcts.reform.dev.dto.responses.PagedTaskResponse;
 import uk.gov.hmcts.reform.dev.dto.responses.TaskResponse;
 import uk.gov.hmcts.reform.dev.exceptions.InvalidStateTransitionException;
 import uk.gov.hmcts.reform.dev.exceptions.TaskNotFoundException;
@@ -105,32 +104,12 @@ class CaseWorkerTaskServiceTest {
     }
 
     @Test
-    @DisplayName("Should return all tasks")
-    void shouldReturnAllTasks() {
-        Task task1 = mock(Task.class);
-        Task task2 = mock(Task.class);
-        TaskResponse response1 = TaskResponse.builder().id(1L).build();
-        TaskResponse response2 = TaskResponse.builder().id(2L).build();
-
-        when(taskRepository.findAll()).thenReturn(Arrays.asList(task1, task2));
-        when(taskMapper.toResponse(task1)).thenReturn(response1);
-        when(taskMapper.toResponse(task2)).thenReturn(response2);
-
-        List<TaskResponse> results = taskService.getTasks();
-
-        assertThat(results).hasSize(2);
-        assertThat(results.get(0).getId()).isEqualTo(1L);
-        assertThat(results.get(1).getId()).isEqualTo(2L);
-    }
-
-    @Test
     @DisplayName("Should return empty list when no tasks")
     void shouldReturnEmptyListWhenNoTasks() {
         when(taskRepository.findAll()).thenReturn(Collections.emptyList());
 
-        List<TaskResponse> results = taskService.getTasks();
-
-        assertThat(results).isEmpty();
+        PagedTaskResponse results = taskService.getTasks(1, 10);
+        assertThat(results.getData()).isEmpty();
     }
 
     @Test

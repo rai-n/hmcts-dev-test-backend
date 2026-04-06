@@ -17,6 +17,12 @@ import uk.gov.hmcts.reform.dev.models.Task.TaskStatus;
 @AllArgsConstructor
 public class TaskResponse {
 
+    /**
+     * Tasks resource type. Resource not fully abstracted into attributes/ relationships
+     */
+    @Builder.Default
+    private String type = "tasks";
+
     private Long id;
     private String title;
     private String description;
