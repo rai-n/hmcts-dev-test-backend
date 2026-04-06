@@ -1,0 +1,20 @@
+INSERT INTO tasks (title, description, status, due_date, version, created_at, updated_at)
+VALUES
+  ('Case AAAA - Initial Review', 'Review initial evidence for case A123', 'DRAFT', '2026-05-01 10:00:00', 0, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
+  ('Case BBBB - Submitted', 'Case submitted for processing', 'SUBMITTED', '2026-05-15 14:00:00', 2, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
+  ('Case CCCC - Preparing', 'Preparing documents for hearing', 'PREPARING', '2026-04-20 09:00:00', 3, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
+  ('Case DDDD - Booked', 'Hearing booked for next month', 'BOOKED', '2026-04-25 11:00:00', 1, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
+  ('Case EFFF - Adjourned', 'Hearing adjourned pending evidence', 'ADJOURNED', '2026-06-01 10:00:00', 15, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
+  ('Case GGGG - Disposed', 'Case completed and disposed', 'DISPOSED', '2026-03-15 16:00:00', 5, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
+  ('Case HHHH - Initial Review', 'Review initial evidence for case A123', 'DRAFT', '2026-05-01 10:00:00', 0, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
+  ('Case IIII - Submitted', 'Case submitted for processing', 'SUBMITTED', '2026-05-15 14:00:00', 2, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
+  ('Case JJJJJ - Preparing', 'Preparing documents for hearing', 'PREPARING', '2026-04-20 09:00:00', 3, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
+  ('Case KKKK - Booked', 'Hearing booked for next month', 'BOOKED', '2026-04-25 11:00:00', 1, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
+  ('Case LLLL - Adjourned', 'Hearing adjourned pending evidence', 'ADJOURNED', '2026-06-01 10:00:00', 15, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
+  ('Case MMMM - Disposed', 'Case completed and disposed', 'DISPOSED', '2026-03-15 16:00:00', 5, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
+  ('Case HHHH - Initial Review', 'Review initial evidence for case A123', 'DRAFT', '2026-05-01 10:00:00', 0, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
+  ('Case NNNN - Submitted', 'Case submitted for processing', 'SUBMITTED', '2026-05-15 14:00:00', 2, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
+  ('Case OOOO - Preparing', 'Preparing documents for hearing', 'PREPARING', '2026-04-20 09:00:00', 3, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
+  ('Case PPPP - Booked', 'Hearing booked for next month', 'BOOKED', '2026-04-25 11:00:00', 1, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
+  ('Case QQQQQ - Adjourned', 'Hearing adjourned pending evidence', 'ADJOURNED', '2026-06-01 10:00:00', 15, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
+  ('Case RRRR - Disposed', 'Case completed and disposed', 'DISPOSED', '2026-03-15 16:00:00', 5, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);

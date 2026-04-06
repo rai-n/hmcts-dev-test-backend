@@ -4,7 +4,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import java.time.LocalDateTime;
-import java.util.List;
+
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +14,7 @@ import org.springframework.test.context.ActiveProfiles;
 import org.springframework.transaction.annotation.Transactional;
 import uk.gov.hmcts.reform.dev.dto.requests.CreateTaskRequest;
 import uk.gov.hmcts.reform.dev.dto.requests.UpdateTaskRequest;
+import uk.gov.hmcts.reform.dev.dto.responses.PagedTaskResponse;
 import uk.gov.hmcts.reform.dev.dto.responses.TaskResponse;
 import uk.gov.hmcts.reform.dev.exceptions.InvalidStateTransitionException;
 import uk.gov.hmcts.reform.dev.exceptions.TaskNotFoundException;
@@ -100,13 +101,15 @@ class CaseWorkerTaskServiceIntegrationTest {
     }
 
     @Test
-    @DisplayName("Should return empty list when no tasks exist")
-    void shouldReturnEmptyListWhenNoTasksExist() {
+    @DisplayName("Should return empty page when no tasks exist")
+    void shouldReturnEmptyPageWhenNoTasksExist() {
         taskRepository.deleteAll();
 
-        List<TaskResponse> tasks = taskService.getTasks();
+        PagedTaskResponse pagedTaskResponse = taskService.getTasks(0, 20);
 
-        assertThat(tasks).isEmpty();
+        assertThat(pagedTaskResponse.getData()).isEmpty();
+        assertThat(pagedTaskResponse.getPageDetails().getTotalElements()).isEqualTo(0L);
+        assertThat(pagedTaskResponse.getLinks()).containsKey("self");
     }
 
     @Test
