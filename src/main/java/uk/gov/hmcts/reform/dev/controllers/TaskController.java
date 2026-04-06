@@ -3,6 +3,7 @@ package uk.gov.hmcts.reform.dev.controllers;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.ExampleObject;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
@@ -19,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
+import uk.gov.hmcts.reform.dev.config.SwaggerExamples;
 import uk.gov.hmcts.reform.dev.dto.requests.CreateTaskRequest;
 import uk.gov.hmcts.reform.dev.dto.requests.UpdateTaskRequest;
 import uk.gov.hmcts.reform.dev.dto.responses.ErrorResponse;
@@ -47,7 +49,14 @@ public class TaskController {
     )
     @ApiResponses(value = {
         @ApiResponse(responseCode = "201", description = "Task created successfully",
-            content = @Content(schema = @Schema(implementation = TaskResponse.class))),
+            content = @Content(
+                schema = @Schema(implementation = TaskResponse.class),
+                examples = @ExampleObject(
+                    name = "TaskResponseExample",
+                    summary = "Created task response",
+                    value = SwaggerExamples.TASK_RESPONSE
+                )
+            )),
         @ApiResponse(responseCode = "400", description = "Invalid request body",
             content = @Content(schema = @Schema(implementation = ErrorResponse.class)))
     })
@@ -73,7 +82,14 @@ public class TaskController {
     )
     @ApiResponses(value = {
         @ApiResponse(responseCode = "200", description = "Tasks retrieved successfully",
-            content = @Content(schema = @Schema(implementation = PagedTaskResponse.class)))
+            content = @Content(
+                schema = @Schema(implementation = PagedTaskResponse.class),
+                examples = @ExampleObject(
+                    name = "PagedTaskResponseExample",
+                    summary = "Paginated task response",
+                    value = SwaggerExamples.PAGED_TASK_RESPONSE
+                )
+            ))
     })
     @GetMapping
     public ResponseEntity<PagedTaskResponse> getTasks(
@@ -93,7 +109,14 @@ public class TaskController {
     )
     @ApiResponses(value = {
         @ApiResponse(responseCode = "200", description = "Task status updated successfully",
-            content = @Content(schema = @Schema(implementation = TaskResponse.class))),
+            content = @Content(
+                schema = @Schema(implementation = TaskResponse.class),
+                examples = @ExampleObject(
+                    name = "UpdatedTaskResponseExample",
+                    summary = "Updated task response",
+                    value = SwaggerExamples.UPDATED_TASK_RESPONSE
+                )
+            )),
         @ApiResponse(responseCode = "400", description = "Invalid status transition or validation failed",
             content = @Content(schema = @Schema(implementation = ErrorResponse.class))),
         @ApiResponse(responseCode = "404", description = "Task not found",
