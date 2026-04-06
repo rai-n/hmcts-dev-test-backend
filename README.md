@@ -1,4 +1,7 @@
 # HMCTS Dev Test Backend
+
+[![Template CI](https://github.com/rai-n/hmcts-dev-test-backend/actions/workflows/ci.yml/badge.svg)](https://github.com/rai-n/hmcts-dev-test-backend/actions/workflows/ci.yml)
+
 This will be the backend for the brand new HMCTS case management system. As a potential candidate we are leaving
 this in your hands. Please refer to the brief for the complete list of tasks! Complete as much as you can and be
 as creative as you want.
