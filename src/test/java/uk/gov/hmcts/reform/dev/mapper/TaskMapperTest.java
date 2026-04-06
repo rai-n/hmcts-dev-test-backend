@@ -109,8 +109,8 @@ class TaskMapperTest {
     }
 
     @Test
-    @DisplayName("Should protect fields during update")
-    void shouldProtectFieldsDuringUpdate() {
+    @DisplayName("Should update status while protecting other fields")
+    void shouldUpdateStatusWhileProtectingOtherFields() {
         LocalDateTime originalDueDate = LocalDateTime.now().plusDays(1);
         Task task = new Task(
             "Original Title",
@@ -127,7 +127,7 @@ class TaskMapperTest {
         assertThat(task.getTitle()).isEqualTo("Original Title");
         assertThat(task.getDescription()).isEqualTo("Original Description");
         assertThat(task.getDueDate()).isEqualTo(originalDueDate);
-        assertThat(task.getStatus()).isNotEqualTo(request.getStatus());
+        assertThat(task.getStatus()).isEqualTo(TaskStatus.BOOKED);
     }
 
     @Test
