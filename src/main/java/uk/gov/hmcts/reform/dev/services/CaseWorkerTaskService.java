@@ -16,7 +16,7 @@ import uk.gov.hmcts.reform.dev.utils.TaskTransitions;
 
 /**
  * Service implementation for case worker task operations.
- * Handles task lifecycle management with basic state validation.
+ * Performs basic state validation.
  */
 @Service
 public class CaseWorkerTaskService implements TaskService {

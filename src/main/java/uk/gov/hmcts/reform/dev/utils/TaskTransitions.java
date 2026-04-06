@@ -9,7 +9,7 @@ import uk.gov.hmcts.reform.dev.models.Task.TaskStatus;
 public final class TaskTransitions {
 
     private TaskTransitions() {
-        // Utility class, prevent instantiation
+
     }
 
     /**
